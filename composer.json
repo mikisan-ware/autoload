@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "mikisan\\core\\util\\autoload": "src/"
+            "mikisan\\core\\util\\autoload\\": "src/"
         }
     }
 }
