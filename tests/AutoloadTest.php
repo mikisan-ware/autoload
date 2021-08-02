@@ -16,14 +16,16 @@ use \mikisan\core\exception\ClassNotFoundException;
 use \mikisan\core\exception\DirectoryNotFoundException;
 
 $project_root = realpath(__DIR__ . "/../../../../");
-require_once "{$project_root}/core/exceptions/ClassNotFoundException.php";
-require_once "{$project_root}/core/exceptions/DirectoryNotFoundException.php";
+require "{$project_root}/tests/TestCaseTrait.php";
+require "{$project_root}/core/exceptions/src/ClassNotFoundException.php";
+require "{$project_root}/core/exceptions/src/DirectoryNotFoundException.php";
 
-require_once __DIR__  . "/TestCaseExtend.php";
-require_once __DIR__  . "/../src/Autoload.php";
+require __DIR__  . "/../src/Autoload.php";
 
-class AutoloadTest extends TestCaseExtend
+class AutoloadTest extends TestCase
 {
+    use TestCaseTrait;
+    
     private $class_name = "mikisan\core\util\Autoload";
     
     public function setUp(): void

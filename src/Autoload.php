@@ -27,13 +27,13 @@ class Autoload
         spl_autoload_register([$this, "autoLoad"]);
     }
     
-    public function init(): void
+    public static function init(): void
     {
         if(self::$instance === null)    { return; }
         self::$instance->dirs   = [];
     }
     
-    public function registerd(): array
+    public static function registerd(): array
     {
         return self::$instance->dirs;
     }
@@ -68,7 +68,7 @@ class Autoload
      * @return  void
      * @throws  \pine\PineException
      */
-    private function register_recuasive(string $target_directory, bool $should_include_subdir): void
+    private static function register_recuasive(string $target_directory, bool $should_include_subdir): void
     {
         if(!is_dir($target_directory))
         {
