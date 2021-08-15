@@ -113,7 +113,19 @@ class Autoload
 
     public function autoLoad($classname): void
     {
-        $this->forceload($classname);
+        // ネームスペースを考慮し、純粋なクラス名だけを抽出する
+        $parts          = explode("\\", $classname);
+        $targetclass    = array_pop($parts);
+        
+        foreach($this->dirs as $dir)
+        {
+            $filepath       = "{$dir}/{$targetclass}.php";
+            if(!is_readable($filepath))     { continue; }
+            require_once $filepath;
+            if(!class_exists($classname))   { continue; }
+            return;
+        }
+        throw new ClassNotFoundException($classname);
     }
     
 }
