@@ -44,7 +44,7 @@ class Autoload
         $parts          = explode("\\", $classname);
         $targetclass    = array_pop($parts);
         
-        foreach($this->dirs as $dir)
+        foreach(self::$instance->dirs as $dir)
         {
             $filepath       = "{$dir}/{$targetclass}.php";
             if(!is_readable($filepath))     { continue; }
