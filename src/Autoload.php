@@ -33,9 +33,14 @@ class Autoload
         self::$instance->dirs   = [];
     }
     
-    public static function registerd(): array
+    public static function get_registerd_dirs(): array
     {
         return self::$instance->dirs;
+    }
+    
+    public static function forceload(string $classname): void
+    {
+        self::autoLoad($classname);
     }
     
     /**
